@@ -160,4 +160,94 @@ public class HotelRoomBooking {
 
         sc.close();
     }
+
+
+// code 
+
+import java.util.Scanner;
+
+public class CourseRegistrationSystem {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String studentName = "";
+        String courseName = "";
+        boolean registered = false;
+
+        int choice;
+
+        do {
+
+            System.out.println("\n===== COURSE REGISTRATION SYSTEM =====");
+            System.out.println("1. Register Student");
+            System.out.println("2. Enroll Course");
+            System.out.println("3. View Details");
+            System.out.println("4. Cancel Course");
+            System.out.println("5. Exit");
+            System.out.print("Enter Choice: ");
+
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    if (!registered) {
+                        System.out.print("Enter Student Name: ");
+                        studentName = sc.nextLine();
+                        registered = true;
+                        System.out.println("Student Registered Successfully!");
+                    } else {
+                        System.out.println("Student Already Registered!");
+                    }
+                    break;
+
+                case 2:
+                    if (registered) {
+                        System.out.print("Enter Course Name: ");
+                        courseName = sc.nextLine();
+                        System.out.println("Course Enrolled Successfully!");
+                    } else {
+                        System.out.println("Register Student First!");
+                    }
+                    break;
+
+                case 3:
+                    if (registered) {
+                        System.out.println("\n===== STUDENT DETAILS =====");
+                        System.out.println("Student Name : " + studentName);
+                        if (!courseName.equals("")) {
+                            System.out.println("Course       : " + courseName);
+                        } else {
+                            System.out.println("Course       : Not Enrolled");
+                        }
+                    } else {
+                        System.out.println("No Student Registered!");
+                    }
+                    break;
+
+                case 4:
+                    if (!courseName.equals("")) {
+                        courseName = "";
+                        System.out.println("Course Cancelled Successfully!");
+                    } else {
+                        System.out.println("No Course Enrolled!");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Thank You!");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice!");
+
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
 }
