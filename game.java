@@ -251,3 +251,24 @@ public class CourseRegistrationSystem {
         sc.close();
     }
 }
+
+import java.util.Scanner;
+
+public class NumberGuessGame {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int secretNumber = 7;
+
+        System.out.print("Guess a number (1-10): ");
+        int guess = sc.nextInt();
+
+        if (guess == secretNumber) {
+            System.out.println("🎉 Correct! You guessed the number.");
+        } else {
+            System.out.println("❌ Wrong! The correct number is " + secretNumber);
+        }
+
+        sc.close();
+    }
+}
