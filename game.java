@@ -46,6 +46,7 @@ public class game {
     }
 }
 
+
 import java.util.Scanner;
 
 public class HotelRoomBooking {
