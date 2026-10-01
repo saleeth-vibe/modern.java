@@ -123,3 +123,72 @@ public class LibraryFineManagement {
         sc.close();
     }
                 }
+
+import java.util.Scanner;
+
+public class QuizGame {
+
+    static int score = 0;
+
+    static void checkAnswer(int answer, int correctAnswer) {
+        if (answer == correctAnswer) {
+            System.out.println("Correct! ✅");
+            score++;
+        } else {
+            System.out.println("Wrong! ❌");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("===== JAVA QUIZ GAME =====");
+
+        System.out.println("\n1. Which keyword is used to create a class?");
+        System.out.println("1. class");
+        System.out.println("2. object");
+        System.out.println("3. new");
+        System.out.println("4. create");
+
+        System.out.print("Enter answer: ");
+        int answer = sc.nextInt();
+        checkAnswer(answer, 1);
+
+
+        System.out.println("\n2. Which method is the starting point of Java?");
+        System.out.println("1. start()");
+        System.out.println("2. main()");
+        System.out.println("3. run()");
+        System.out.println("4. execute()");
+
+        System.out.print("Enter answer: ");
+        answer = sc.nextInt();
+        checkAnswer(answer, 2);
+
+
+        System.out.println("\n3. Which keyword creates an object?");
+        System.out.println("1. class");
+        System.out.println("2. object");
+        System.out.println("3. new");
+        System.out.println("4. create");
+
+        System.out.print("Enter answer: ");
+        answer = sc.nextInt();
+        checkAnswer(answer, 3);
+
+
+        System.out.println("\n===== RESULT =====");
+        System.out.println("Your Score: " + score + "/3");
+
+        if (score == 3) {
+            System.out.println("Excellent! ");
+        } else if (score >= 2) {
+            System.out.println("Good Job! ");
+        } else {
+            System.out.println("Keep Practicing! ");
+        }
+
+        sc.close();
+    }
+}
