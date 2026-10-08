@@ -401,3 +401,74 @@ public class ContactManager {
         sc.close();
     }
         }
+
+import java.util.Scanner;
+
+public class ExpenseTracker {
+
+    static double totalExpense = 0;
+
+    static void addExpense(double amount) {
+        if (amount > 0) {
+            totalExpense += amount;
+            System.out.println("Expense added! ✅");
+        } else {
+            System.out.println("Invalid amount!");
+        }
+    }
+
+    static void showTotal() {
+        System.out.println("Total Expense: ₹" + totalExpense);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== EXPENSE TRACKER =====");
+            System.out.println("1. Add Expense");
+            System.out.println("2. Show Total Expense");
+            System.out.println("3. Check Budget");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter expense amount: ₹");
+                    double amount = sc.nextDouble();
+                    addExpense(amount);
+                    break;
+
+                case 2:
+                    showTotal();
+                    break;
+
+                case 3:
+                    double budget = 5000;
+
+                    if (totalExpense <= budget) {
+                        System.out.println("You are within budget. ");
+                        System.out.println("Remaining: ₹" + (budget - totalExpense));
+                    } else {
+                        System.out.println("Budget exceeded! ");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Thank you! ");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+
+        } while (choice != 4);
+
+        sc.close();
+    }
+}
