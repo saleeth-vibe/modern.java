@@ -323,3 +323,81 @@ public class DigitalWallet {
         sc.close();
     }
 }
+
+import java.util.Scanner;
+
+public class ContactManager {
+
+    static String name = "";
+    static String phone = "";
+
+    static void addContact(String n, String p) {
+        name = n;
+        phone = p;
+        System.out.println("Contact added successfully! ✅");
+    }
+
+    static void viewContact() {
+        if (name.equals("")) {
+            System.out.println("No contact found!");
+        } else {
+            System.out.println("\nName  : " + name);
+            System.out.println("Phone : " + phone);
+        }
+    }
+
+    static void deleteContact() {
+        name = "";
+        phone = "";
+        System.out.println("Contact deleted! ✅");
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== CONTACT MANAGER =====");
+            System.out.println("1. Add Contact");
+            System.out.println("2. View Contact");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter name: ");
+                    String n = sc.nextLine();
+
+                    System.out.print("Enter phone: ");
+                    String p = sc.nextLine();
+
+                    addContact(n, p);
+                    break;
+
+                case 2:
+                    viewContact();
+                    break;
+
+                case 3:
+                    deleteContact();
+                    break;
+
+                case 4:
+                    System.out.println("Thank you! ");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+
+        } while (choice != 4);
+
+        sc.close();
+    }
+        }
