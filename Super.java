@@ -543,3 +543,57 @@ public class ExpenseTracker {
         sc.close();
     }
                         }
+
+import java.util.Scanner;
+
+public class GradeCalculator {
+
+    static void calculateGrade(int marks) {
+        if (marks >= 90) {
+            System.out.println("Grade: A+");
+        } else if (marks >= 80) {
+            System.out.println("Grade: A");
+        } else if (marks >= 70) {
+            System.out.println("Grade: B");
+        } else if (marks >= 60) {
+            System.out.println("Grade: C");
+        } else if (marks >= 35) {
+            System.out.println("Grade: D");
+        } else {
+            System.out.println("Result: Fail");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter student name: ");
+        String name = sc.nextLine();
+
+        int total = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Enter subject " + i + " marks (0-100): ");
+            int marks = sc.nextInt();
+
+            if (marks < 0 || marks > 100) {
+                System.out.println("Invalid marks!");
+                sc.close();
+                return;
+            }
+
+            total += marks;
+        }
+
+        double percentage = total / 5.0;
+
+        System.out.println("\n===== STUDENT RESULT =====");
+        System.out.println("Name: " + name);
+        System.out.println("Total Marks: " + total + "/500");
+        System.out.printf("Percentage: %.2f%%\n", percentage);
+
+        calculateGrade((int) percentage);
+
+        sc.close();
+    }
+            }
