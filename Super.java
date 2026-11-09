@@ -105,3 +105,94 @@ public class MiniBanking {
         sc.close();
     }
 }
+
+import java.util.Scanner;
+
+public class EmployeeAttendance {
+
+    static String[] employees = new String[5];
+    static boolean[] attendance = new boolean[5];
+    static int count = 0;
+
+    static void addEmployee(String name) {
+        if (count < employees.length) {
+            employees[count] = name;
+            attendance[count] = false;
+            count++;
+            System.out.println("Employee added!");
+        } else {
+            System.out.println("Employee limit reached!");
+        }
+    }
+
+    static void markAttendance(String name) {
+        for (int i = 0; i < count; i++) {
+            if (employees[i].equalsIgnoreCase(name)) {
+                attendance[i] = true;
+                System.out.println("Attendance marked!");
+                return;
+            }
+        }
+
+        System.out.println("Employee not found!");
+    }
+
+    static void viewAttendance() {
+        System.out.println("\n===== ATTENDANCE REPORT =====");
+
+        for (int i = 0; i < count; i++) {
+            String status = attendance[i] ? "Present" : "Absent";
+
+            System.out.println(
+                employees[i] + " : " + status
+            );
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== EMPLOYEE ATTENDANCE =====");
+            System.out.println("1. Add Employee");
+            System.out.println("2. Mark Attendance");
+            System.out.println("3. View Attendance");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter employee name: ");
+                    String name = sc.nextLine();
+                    addEmployee(name);
+                    break;
+
+                case 2:
+                    System.out.print("Enter employee name: ");
+                    String empName = sc.nextLine();
+                    markAttendance(empName);
+                    break;
+
+                case 3:
+                    viewAttendance();
+                    break;
+
+                case 4:
+                    System.out.println("Thank you!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+
+        } while (choice != 4);
+
+        sc.close();
+    }
+                        }
