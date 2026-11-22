@@ -302,3 +302,98 @@ public class RailwayBooking {
         sc.close();
     }
             }
+
+import java.util.Scanner;
+
+public class ParkingLot {
+
+    static String[] vehicles = new String[5];
+    static int count = 0;
+
+    static void parkVehicle(String number) {
+        if (count < vehicles.length) {
+            vehicles[count] = number;
+            count++;
+            System.out.println("Vehicle parked successfully!");
+        } else {
+            System.out.println("Parking lot is full!");
+        }
+    }
+
+    static void removeVehicle(String number) {
+        for (int i = 0; i < count; i++) {
+            if (vehicles[i].equalsIgnoreCase(number)) {
+
+                for (int j = i; j < count - 1; j++) {
+                    vehicles[j] = vehicles[j + 1];
+                }
+
+                count--;
+                System.out.println("Vehicle removed successfully!");
+                return;
+            }
+        }
+
+        System.out.println("Vehicle not found!");
+    }
+
+    static void showVehicles() {
+        if (count == 0) {
+            System.out.println("Parking lot is empty!");
+            return;
+        }
+
+        System.out.println("\n--- Parked Vehicles ---");
+        for (int i = 0; i < count; i++) {
+            System.out.println((i + 1) + ". " + vehicles[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== PARKING LOT =====");
+            System.out.println("1. Park Vehicle");
+            System.out.println("2. Remove Vehicle");
+            System.out.println("3. View Vehicles");
+            System.out.println("4. Available Slots");
+            System.out.println("5. Exit");
+
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter vehicle number: ");
+                    parkVehicle(sc.nextLine());
+                    break;
+
+                case 2:
+                    System.out.print("Enter vehicle number: ");
+                    removeVehicle(sc.nextLine());
+                    break;
+
+                case 3:
+                    showVehicles();
+                    break;
+
+                case 4:
+                    System.out.println("Available slots: " + (vehicles.length - count));
+                    break;
+
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+        }
